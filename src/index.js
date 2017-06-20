@@ -7,6 +7,7 @@ import img1 from './images/kitten/200.jpg'
 import img2 from './images/kitten/201.jpg'
 import img3 from './images/kitten/202.jpg'
 import img4 from './images/kitten/203.jpg'
+import imgCheck from './images/check.png'
 
 const imageList = [img1, img2, img3, img4]
 
@@ -33,8 +34,16 @@ class ImagePicker extends Component {
   renderImage(image, key) {
     const selected = this.state.selected.get(key) || false
     return (
-      <div className="responsive" key={key}>
-        <img className={`thumbnail${selected ? " selected" : ""}`} src={image} onClick={this.handleImageClick(key)}/>
+      <div key={key}
+        className={`responsive${selected ? " selected" : ""}`} 
+        onClick={this.handleImageClick(key)}>
+        <img src={image}
+          className={`thumbnail${selected ? " selected" : ""}`}
+          style={{ width: 150, height: 150, objectFit: "cover" }}
+        />
+        <div className="checked">
+          <img src={imgCheck} style={{ width: 75, height: 75, objectFit: "cover" }}/>
+        </div>
       </div>
     )
   }
@@ -51,6 +60,8 @@ class ImagePicker extends Component {
 
 render(
   <ImagePicker images={imageList}
-    multiple={false}
+    
   />, document.querySelector('#root')
 )
+
+export default ImagePicker

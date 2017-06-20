@@ -2,8 +2,10 @@
   width: 100%;
 
   .responsive {
-    padding: 0 6px;
+    position: relative;
+    margin: 0 6px;
     float: left;
+    opacity: 1;
 
     @media only screen and (max-width: 700px){
       width: 49.99999%;
@@ -19,15 +21,35 @@
       border-radius: 4px;  /* Rounded border */
       padding: 5px; /* Some padding */
       width: 150px; /* Set a small width */
+      opacity: 1;
 
       &:hover {
-        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-        cursor: pointer;
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.7);
       }
     }
 
     .selected {
-      background-color: rgba(0, 140, 186, 0.8);
+      background-color: rgba(0, 140, 186, 1);
+    }
+    
+    &:hover {
+      cursor: pointer;
+    }
+
+    .checked {
+      display: none;
+    }
+  }
+
+  .selected {
+    opacity: 0.7;
+
+    .checked {
+      display: inline-block;
+      transition: .5s ease;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
 }
