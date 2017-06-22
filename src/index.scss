@@ -7,15 +7,6 @@
     float: left;
     opacity: 1;
 
-    @media only screen and (max-width: 700px){
-      width: 49.99999%;
-      margin: 6px 0;
-    }
-
-    @media only screen and (max-width: 500px){
-      width: 100%;
-    }
-
     .thumbnail {
       border: 1px solid #ddd; /* Gray border */
       border-radius: 4px;  /* Rounded border */
@@ -51,5 +42,9 @@
       bottom: 0;
       right: 0;
     }
+  }
+
+  .clear {
+    clear: both;
   }
 }
