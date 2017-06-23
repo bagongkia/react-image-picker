@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import imgCheck from '../assets/images/check.png'
 
 const ImageStyle = (width, height) => {
   return {
@@ -25,7 +24,8 @@ export default class Image extends Component {
           style={ImageStyle(150, 150)}
         />
         <div className="checked">
-          <img src={imgCheck} style={{ width: 75, height: 75, objectFit: "cover" }}/>
+          {/*<img src={imgCheck} style={{ width: 75, height: 75, objectFit: "cover" }}/>*/}
+          <div className="icon"/>
         </div>
       </div>
     )

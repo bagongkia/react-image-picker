@@ -13,6 +13,7 @@
       padding: 5px; /* Some padding */
       width: 150px; /* Set a small width */
       opacity: 1;
+      margin: 0;
 
       &:hover {
         box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.7);
@@ -41,6 +42,13 @@
       position: absolute;
       bottom: 0;
       right: 0;
+
+      .icon {
+        background: url("./assets/images/check.png");
+        background-size: cover;
+        height: 75px;
+        width: 75px;
+      }
     }
   }
 

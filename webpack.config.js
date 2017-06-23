@@ -11,12 +11,15 @@ var scssProd = ExtractTextPlugin.extract({
   publicPath: './'
 })
 var scssConfig = isProd ? scssProd : scssDev
+var entry = isProd ? './src/react-image-picker.js' : './src/index.js'
 
 module.exports = {
-  entry: './src/index.js',
+  entry: entry,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'react-image-picker.js'
+    filename: './index.js',
+    library: 'ReactImagePicker',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -37,8 +40,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 8888
+    contentBase: path.join(__dirname, 'dist')
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -50,7 +52,7 @@ module.exports = {
       template: './src/index.html'
     }),
     new ExtractTextPlugin({
-      filename: 'react-image-picker.css',
+      filename: 'index.css',
       disable: !isProd,
       allChunks: true
     })
