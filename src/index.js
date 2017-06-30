@@ -10,9 +10,9 @@ import img4 from './assets/images/kitten/203.jpg'
 const imageList = [img1, img2, img3, img4]
 
 class Demo extends Component {
-  constructor() {
-    super()
-    this.state = {image: {}}
+  constructor(props) {
+    super(props)
+    this.state = {image: null}
   }
 
   onPick(image) {
@@ -22,7 +22,8 @@ class Demo extends Component {
   render() {
     return (
       <div>
-        <ImagePicker images={imageList.map((image, i) => ({src: image, value: i}))}
+        <ImagePicker 
+          images={imageList.map((image, i) => ({src: image, value: i}))}
           onPick={this.onPick.bind(this)}
         />
         <button type="button" onClick={() => console.log(this.state.image)}>OK</button>
