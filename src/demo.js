@@ -12,21 +12,38 @@ const imageList = [img1, img2, img3, img4]
 class Demo extends Component {
   constructor(props) {
     super(props)
-    this.state = {image: null}
+    this.state = {
+      image: null,
+      images: []
+    }
   }
 
-  onPick(image) {
+  onPickImage(image) {
     this.setState({image})
+  }
+
+  onPickImages(images) {
+    this.setState({images})
   }
 
   render() {
     return (
       <div>
+        <h1>React Image Picker</h1>
+        <h3>Single Select</h3>
         <ImagePicker 
           images={imageList.map((image, i) => ({src: image, value: i}))}
-          onPick={this.onPick.bind(this)}
+          onPick={this.onPickImage.bind(this)}
         />
-        <button type="button" onClick={() => console.log(this.state.image)}>OK</button>
+        <textarea rows="4" cols="100" value={this.state.image && JSON.stringify(this.state.image)} disabled/>
+        
+        <h3>Multiple Select</h3>
+        <ImagePicker 
+          images={imageList.map((image, i) => ({src: image, value: i}))}
+          onPick={this.onPickImages.bind(this)}
+          multiple
+        />
+        <textarea rows="4" cols="100" value={this.state.images && JSON.stringify(this.state.images)} disabled/>
       </div>
     )
   }

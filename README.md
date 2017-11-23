@@ -6,6 +6,8 @@
 # React Image Picker
 The image picker is used for selecting single or multiple images from gallery.
 
+[Live Demo](https://bagongkia.github.io/react-image-picker/)
+
 ## Features
 - jQuery Free
 - Single or multiple images selection
@@ -62,3 +64,7 @@ class App extends Component {
 
 export default App
 ```
+
+## License
+
+React-Image-Picker is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
