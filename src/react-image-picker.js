@@ -16,13 +16,14 @@ class ImagePicker extends Component {
   }
   componentDidMount() {
     const { multiple, selected } = this.props;
-    if (multiple) {
-      if (selected[0]) {
+    if (selected)
+      if (multiple) {
+        if (selected[0]) {
+          this.changeState(this.props);
+        }
+      } else if (selected) {
         this.changeState(this.props);
       }
-    } else if (selected) {
-      this.changeState(this.props);
-    }
   }
   componentWillReceiveProps = newProps => {
     if (newProps.selected !== this.props.selected) {
@@ -56,6 +57,9 @@ class ImagePicker extends Component {
       pickedImageToArray.push({ src: image, value: i })
     );
     onPick(multiple ? pickedImageToArray : pickedImageToArray[0]);
+    if (!selected) {
+      this.setState({ picked: newerPickedImage });
+    }
   }
 
   renderImage(image, i) {
