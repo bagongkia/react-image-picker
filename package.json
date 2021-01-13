@@ -11,13 +11,13 @@
   "author": "In Sin <insin_lie93@yahoo.com>",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0 || ^16.1.1",
-    "react-dom": "^0.14.0 || ^16.1.1"
+    "react": "16.8.4",
+    "react-dom": "16.8.4"
   },
   "dependencies": {
     "immutable": "^3.8.2",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react": "16.8.4",
+    "react-dom": "16.8.4"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -31,7 +31,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.14.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^1.1.0",
