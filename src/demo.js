@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {useState} from 'react'
 import {render} from 'react-dom'
 import ImagePicker from './index'
 
@@ -12,14 +12,16 @@ const imageList = [img1, img2, img3, img4]
 const Demo = () => {
     const [image, setImage] = useState();
     const [images, setImages] = useState([]);
+    const [imagesPreselect, setImagesPreselect] = useState([]);
 
     const onPickImage = (newImage) => {
         setImage(newImage);
-        console.log(image)
     }
     const onPickImages = (newImages) => {
         setImages(newImages);
-        console.log(images)
+    }
+    const onPickImagesPreselect = (newImages) => {
+        setImagesPreselect(newImages);
     }
 
     return (
@@ -39,6 +41,15 @@ const Demo = () => {
                 multiple
             />
             <textarea rows="4" cols="100" value={images && JSON.stringify(images)} disabled/>
+
+
+            <h3>Multiple Select and Preselected images</h3>
+            <ImagePicker
+                images={imageList.map((image, i) => ({src: image, value: i, isSelected : i % 2 == 0}))}
+                pickHandler={onPickImagesPreselect}
+                multiple
+            />
+            <textarea rows="4" cols="100" value={imagesPreselect && JSON.stringify(imagesPreselect)} disabled/>
         </div>
     )
 }
