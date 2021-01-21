@@ -27,6 +27,7 @@ const ImagePicker = ({multiple, pickHandler, images}) => {
                     isSelected={image.isSelected}
                     clickHandler={() => handleImageClick(image)}
                     key={i}
+                    size={image.size}
                 />
             )}
             <div className="clear"/>

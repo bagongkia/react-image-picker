@@ -13,6 +13,7 @@ const Demo = () => {
     const [image, setImage] = useState();
     const [images, setImages] = useState([]);
     const [imagesPreselect, setImagesPreselect] = useState([]);
+    const [imagesSize, setImagesSize] = useState([]);
 
     const onPickImage = (newImage) => {
         setImage(newImage);
@@ -23,6 +24,9 @@ const Demo = () => {
     const onPickImagesPreselect = (newImages) => {
         setImagesPreselect(newImages);
     }
+    const onPickImagesChangedSize= (newImages) => {
+        setImagesSize(newImages);
+    }
 
     return (
         <div>
@@ -30,7 +34,7 @@ const Demo = () => {
             <h3>Single Select</h3>
             <ImagePicker
                 images={imageList.map((image, i) => ({src: image, value: i}))}
-                pickHandler ={onPickImage}
+                pickHandler={onPickImage}
             />
             <textarea rows="4" cols="100" value={image && JSON.stringify(image)} disabled/>
 
@@ -45,11 +49,24 @@ const Demo = () => {
 
             <h3>Multiple Select and Preselected images</h3>
             <ImagePicker
-                images={imageList.map((image, i) => ({src: image, value: i, isSelected : i % 2 == 0}))}
+                images={imageList.map((image, i) => ({src: image, value: i, isSelected: i % 2 == 0}))}
                 pickHandler={onPickImagesPreselect}
                 multiple
             />
             <textarea rows="4" cols="100" value={imagesPreselect && JSON.stringify(imagesPreselect)} disabled/>
+
+            <h3>Multiple Select and changed size</h3>
+            <ImagePicker
+                images={imageList.map(
+                    (image, i) =>
+                        ({
+                            src: image,
+                            value: i,
+                            size: {height: 200, width: 200}}))}
+                pickHandler={onPickImagesChangedSize}
+                multiple
+            />
+            <textarea rows="4" cols="100" value={imagesSize && JSON.stringify(imagesSize)} disabled/>
         </div>
     )
 }
