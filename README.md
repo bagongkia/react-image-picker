@@ -17,7 +17,7 @@ The image picker is used for selecting single or multiple images from gallery.
 
 ## Installation
 ```
-npm install react-image-picker
+// npm install react-image-picker - will install source, not current proyect
 ```
 
 ### Examples
