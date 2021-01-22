@@ -76,6 +76,9 @@ class App extends Component {
 export default App
 ```
 
+##
+Current proyect is fork of [source](https://github.com/bagongkia/react-image-picker)
+
 ## License
 
 React-Image-Picker is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
