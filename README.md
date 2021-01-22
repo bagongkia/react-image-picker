@@ -11,7 +11,8 @@ The image picker is used for selecting single or multiple images from gallery.
 ## Features
 - jQuery Free
 - Single or multiple images selection
-- Styling (...in progress)
+- Size selection
+- PreSelected images
 - ...
 
 ## Installation
@@ -53,7 +54,17 @@ class App extends Component {
     return (
       <div>
         <ImagePicker 
-          images={imageList.map((image, i) => ({src: image, value: i}))}
+          images={
+              imageList.map(
+                  (image, i) => (
+                      {
+                          src: image, 
+                          value: i,
+                          isSelected: i % 2 === 0,
+                          size: {height: 200, width: 200}
+                      })
+              )
+          }
           onPick={this.onPick}
         />
         <button type="button" onClick={() => console.log(this.state.image)}>OK</button>

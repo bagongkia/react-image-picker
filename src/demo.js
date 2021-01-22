@@ -24,7 +24,7 @@ const Demo = () => {
     const onPickImagesPreselect = (newImages) => {
         setImagesPreselect(newImages);
     }
-    const onPickImagesChangedSize= (newImages) => {
+    const onPickImagesChangedSize = (newImages) => {
         setImagesSize(newImages);
     }
 
@@ -46,10 +46,9 @@ const Demo = () => {
             />
             <textarea rows="4" cols="100" value={images && JSON.stringify(images)} disabled/>
 
-
             <h3>Multiple Select and Preselected images</h3>
             <ImagePicker
-                images={imageList.map((image, i) => ({src: image, value: i, isSelected: i % 2 == 0}))}
+                images={imageList.map((image, i) => ({src: image, value: i, isSelected: i % 2 === 0}))}
                 pickHandler={onPickImagesPreselect}
                 multiple
             />
@@ -62,7 +61,8 @@ const Demo = () => {
                         ({
                             src: image,
                             value: i,
-                            size: {height: 200, width: 200}}))}
+                            size: {height: 200, width: 200}
+                        }))}
                 pickHandler={onPickImagesChangedSize}
                 multiple
             />
