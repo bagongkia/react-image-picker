@@ -16,19 +16,32 @@ class ImagePicker extends Component {
   }
 
   handleImageClick(image) {
-    const { multiple, onPick } = this.props
+    const { multiple, onPick, maxPicks, onMaxPicks } = this.props
     const pickedImage = multiple ? this.state.picked : Map()
-    const newerPickedImage = 
-      pickedImage.has(image.value) ? 
-        pickedImage.delete(image.value) : 
-          pickedImage.set(image.value, image.src)
-          
-    this.setState({picked: newerPickedImage})
+    let newerPickedImage
 
-    const pickedImageToArray = []
-    newerPickedImage.map((image, i) => pickedImageToArray.push({src: image, value: i}))
-    
-    onPick(multiple ? pickedImageToArray : pickedImageToArray[0])
+    if (pickedImage.has(image.value)) {
+      newerPickedImage = pickedImage.delete(image.value)
+    } else {
+      if (typeof maxPicks === 'undefined') {
+        newerPickedImage = pickedImage.set(image.value, image.src)
+      } else {
+        if (pickedImage.size < maxPicks) {
+          newerPickedImage = pickedImage.set(image.value, image.src)
+        } else {
+          onMaxPicks(image)
+        }
+      }
+    }
+
+    if (newerPickedImage) {
+      this.setState({picked: newerPickedImage})
+
+      const pickedImageToArray = []
+      newerPickedImage.map((image, i) => pickedImageToArray.push({src: image, value: i}))
+      
+      onPick(multiple ? pickedImageToArray : pickedImageToArray[0])
+    }
   }
 
   renderImage(image, i) {
@@ -56,7 +69,9 @@ class ImagePicker extends Component {
 ImagePicker.propTypes = {
   images: PropTypes.array,
   multiple: PropTypes.bool,
-  onPick: PropTypes.func
+  onPick: PropTypes.func,
+  maxPicks: PropTypes.number,
+  onMaxPicks: PropTypes.func,
 }
 
 export default ImagePicker
