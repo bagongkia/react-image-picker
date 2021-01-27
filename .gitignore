@@ -57,5 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# vscode
+.vscode
+
 # demo
 demo/
