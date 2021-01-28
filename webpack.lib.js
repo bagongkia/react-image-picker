@@ -7,7 +7,7 @@ const common = require('./webpack.common.js')
 
 module.exports = {
     entry: {
-        app: './src/react-image-picker.js'
+        app: './src/index.js'
     },
     output: {
         filename: '[name].js',

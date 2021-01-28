@@ -1,14 +1,14 @@
 {
-  "name": "react-image-picker",
+  "name": "simple-react-image-picker",
   "version": "1.1.1",
   "description": "Picks images from gallery",
-  "main": "dist/react-image-picker.js",
+  "main": "dist/app.js",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build-lib": "webpack --config webpack.lib.js"
   },
-  "author": "In Sin <insin_lie93@yahoo.com>",
+  "author": "vashkevich_sj_16@mf.grsu.by (https://github.com/vashkevichsj16)",
   "license": "MIT",
   "peerDependencies": {
     "react": "16.8.4",
@@ -36,7 +36,7 @@
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^1.1.0",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.9.4",
+    "webpack-dev-server": "^2.11.5",
     "webpack-merge": "^4.1.1"
   }
 }
