@@ -45,11 +45,13 @@ class ImagePicker extends Component {
   }
 
   renderImage(image, i) {
+    const { onError } = this.props;
     return (
       <Image 
         src={image.src}
         isSelected={this.state.picked.has(image.value)} 
-        onImageClick={() => this.handleImageClick(image)} 
+        onImageClick={() => this.handleImageClick(image)}
+        onError={onError} 
         key={i}
       />
     )

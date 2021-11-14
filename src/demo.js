@@ -39,6 +39,10 @@ class Demo extends Component {
     this.setState({max_message})
   }
 
+  onError(e) {
+    console.log(e)
+  }
+
   render() {
     return (
       <div>
@@ -47,6 +51,7 @@ class Demo extends Component {
         <ImagePicker
           images={imageList.map((image, i) => ({src: image, value: i}))}
           onPick={this.onPickImage.bind(this)}
+          onError={this.onError.bind(this)}
         />
         <textarea rows="4" cols="100" value={this.state.image && JSON.stringify(this.state.image)} disabled/>
         
