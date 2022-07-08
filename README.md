@@ -39,20 +39,24 @@ import img4 from './images/kitten/203.jpg'
 
 const imageList = [img1, img2, img3, img4]
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      image: null
+const App = () => {
+    const [image, setImage] = useState();
+    const [images, setImages] = useState([]);
+    const [imagesPreselect, setImagesPreselect] = useState([]);
+    const [imagesSize, setImagesSize] = useState([]);
+
+    const onPickImage = (newImage) => {
+        setImage(newImage);
     }
-    this.onPick = this.onPick.bind(this)
-  }
-
-  onPick(image) {
-    this.setState({image})
-  }
-
-  render() {
+    const onPickImages = (newImages) => {
+        setImages(newImages);
+    }
+    const onPickImagesPreselect = (newImages) => {
+        setImagesPreselect(newImages);
+    }
+    const onPickImagesChangedSize = (newImages) => {
+        setImagesSize(newImages);
+    }
     return (
       <div>
         <ImagePicker 
@@ -67,19 +71,18 @@ class App extends Component {
                       })
               )
           }
-          onPick={this.onPick}
+          pickHandler={onPickImage}
         />
         <button type="button" onClick={() => console.log(this.state.image)}>OK</button>
       </div>
     )
-  }
 }
 
 export default App
 ```
 
 ##
-Current proyect is fork of [source](https://github.com/bagongkia/react-image-picker)
+Current project is fork of [source](https://github.com/bagongkia/react-image-picker)
 
 ## License
 
