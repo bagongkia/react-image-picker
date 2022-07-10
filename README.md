@@ -80,6 +80,16 @@ const App = () => {
 export default App
 ```
 
+### How to build lib 
+building 
+```
+npm run build-lib
+```
+publishing
+```
+npm publish
+```
+
 ##
 Current project is fork of [source](https://github.com/bagongkia/react-image-picker)
 
