@@ -1,18 +1,18 @@
-const merge = require('webpack-merge')
+const {merge} = require('webpack-merge')
 const common = require('./webpack.common.js')
+const path = require("path");
+const webpack = require('webpack')
 
 module.exports = merge(common, {
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './demo'
+        static: {
+            directory: path.join(__dirname, "./demo")
+        },
     },
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            }
-        ]
-    }
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.BABEL_ENV': JSON.stringify('development')
+        })
+    ]
 })

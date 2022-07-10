@@ -1,11 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const common = require('./webpack.common.js')
 
 module.exports = {
+    mode: 'production',
     entry: {
         app: './src/index.js'
     },
@@ -15,38 +13,47 @@ module.exports = {
         library: 'ReactImagePicker',
         libraryTarget: 'umd'
     },
+    resolve: {
+        alias: {
+            'react': path.resolve(__dirname, './node_modules/react'),
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+        }
+    },
+    externals: {
+        'react': 'react', // Case matters here
+        'react-dom' : 'reactDOM' // Case matters here
+    },
     module: {
         rules: [
             {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader'],
-                    publicPath: './'
-                })
-            },
-            {
-                test: /\.js$/, 
-                exclude: /node_modules/,
-                use: 'babel-loader'
-            },
-            {
                 test: /\.(gif|png|jpe?g)$/i,
                 exclude: /node_modules/,
-                use: 'file-loader'
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: "[name].[ext]",
+                        esModule: false
+                    }
+                },
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader'
             }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
-        new UglifyJSPlugin({
-            sourceMap: true
-        }),
-        new ExtractTextPlugin({
-            filename: 'index.css',
-            allChunks: true
-        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })

@@ -28,8 +28,7 @@ npm install simple-react-image-picker - will install source, not current proyect
 ```javascript
 //ES6
 import React, { Component } from 'react'
-import ImagePicker from 'react-image-picker'
-import 'react-image-picker/dist/index.css'
+import ImagePicker from 'simple-react-image-picker'
 
 //import images from local
 import img1 from './images/kitten/200.jpg'
