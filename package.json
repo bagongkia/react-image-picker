@@ -1,42 +1,40 @@
 {
-  "name": "react-image-picker",
-  "version": "1.1.1",
+  "name": "simple-react-image-picker",
+  "version": "1.1.17",
   "description": "Picks images from gallery",
-  "main": "dist/react-image-picker.js",
+  "main": "dist/app.js",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build-lib": "webpack --config webpack.lib.js"
   },
-  "author": "In Sin <insin_lie93@yahoo.com>",
+  "author": "vashkevich_sj_16@mf.grsu.by (https://github.com/vashkevichsj16)",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0 || ^16.1.1",
-    "react-dom": "^0.14.0 || ^16.1.1"
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   },
   "dependencies": {
     "immutable": "^3.8.2",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.0.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.4",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "file-loader": "^0.11.2",
-    "html-webpack-plugin": "^2.28.0",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "node-sass": "^7.0.0",
+    "sass-loader": "^13.0.2",
     "style-loader": "^0.18.2",
-    "uglifyjs-webpack-plugin": "^1.1.0",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.9.4",
-    "webpack-merge": "^4.1.1"
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3",
+    "webpack-merge": "^5.8.0"
   }
 }

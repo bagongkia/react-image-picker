@@ -4,29 +4,31 @@
 [![npm](https://img.shields.io/npm/l/react-image-picker.svg)](http://opensource.org/licenses/MIT)
 
 # React Image Picker
-The image picker is used for selecting single or multiple images from gallery.
+The image picker is used for selecting single or multiple images from the list.
 
-[Live Demo](https://bagongkia.github.io/react-image-picker/)
+[Live Demo](https://vashkevichsj16.github.io/node-image-picker-demo/)
 
 ## Features
 - jQuery Free
 - Single or multiple images selection
-- Styling (...in progress)
+- Size selection
+- PreSelected images
 - ...
 
 ## Installation
 ```
-npm install react-image-picker
+npm install simple-react-image-picker - will install source, not current proyect
 ```
 
 ### Examples
-![React Image Picker Demo](https://raw.githubusercontent.com/bagongkia/react-image-picker/master/docs/img/react-image-picker-demo.jpg)
+![How its looks](https://raw.githubusercontent.com/bagongkia/react-image-picker/master/docs/img/react-image-picker-demo.jpg)
 
+
+#### Component style
 ```javascript
 //ES6
 import React, { Component } from 'react'
-import ImagePicker from 'react-image-picker'
-import 'react-image-picker/dist/index.css'
+import ImagePicker from 'simple-react-image-picker'
 
 //import images from local
 import img1 from './images/kitten/200.jpg'
@@ -36,34 +38,60 @@ import img4 from './images/kitten/203.jpg'
 
 const imageList = [img1, img2, img3, img4]
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      image: null
+const App = () => {
+    const [image, setImage] = useState();
+    const [images, setImages] = useState([]);
+    const [imagesPreselect, setImagesPreselect] = useState([]);
+    const [imagesSize, setImagesSize] = useState([]);
+
+    const onPickImage = (newImage) => {
+        setImage(newImage);
     }
-    this.onPick = this.onPick.bind(this)
-  }
-
-  onPick(image) {
-    this.setState({image})
-  }
-
-  render() {
+    const onPickImages = (newImages) => {
+        setImages(newImages);
+    }
+    const onPickImagesPreselect = (newImages) => {
+        setImagesPreselect(newImages);
+    }
+    const onPickImagesChangedSize = (newImages) => {
+        setImagesSize(newImages);
+    }
     return (
       <div>
         <ImagePicker 
-          images={imageList.map((image, i) => ({src: image, value: i}))}
-          onPick={this.onPick}
+          images={
+              imageList.map(
+                  (image, i) => (
+                      {
+                          src: image, 
+                          value: i,
+                          isSelected: i % 2 === 0,
+                          size: {height: 200, width: 200}
+                      })
+              )
+          }
+          pickHandler={onPickImage}
         />
         <button type="button" onClick={() => console.log(this.state.image)}>OK</button>
       </div>
     )
-  }
 }
 
 export default App
 ```
+
+### How to build lib 
+building 
+```
+npm run build-lib
+```
+publishing
+```
+npm publish
+```
+
+##
+Current project is fork of [source](https://github.com/bagongkia/react-image-picker)
 
 ## License
 
