@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import './index.scss'
 import Image from './components/image'
 
 const ImagePicker = ({multiple, pickHandler, images}) => {
 
     const [imageList, setImageList] = useState(images);
-    const [multipleActive, setMultipleActive] = useState(multiple)
+    const [multipleActive, setMultipleActive] = useState(multiple);
 
     const handleImageClick = (image) => {
         if (!multipleActive) {
